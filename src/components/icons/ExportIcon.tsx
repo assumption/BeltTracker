@@ -2,7 +2,7 @@ import { type JSX } from 'react';
 import useSideBarExpand from '../../hooks/useSideBarExpand';
 
 export default function ExportIcon(): JSX.Element {
-    const { expanded } = useSideBarExpand();
+    const { showSideBarExpanded } = useSideBarExpand();
 
     return (
         <svg
@@ -11,7 +11,7 @@ export default function ExportIcon(): JSX.Element {
             viewBox='0 0 24 24'
             strokeWidth={2}
             stroke='currentColor'
-            className={`${expanded && 'mr-2'} w-5 h-5 flex-shrink-0`}
+            className={`${showSideBarExpanded && 'mr-2'} w-5 h-5 flex-shrink-0`}
         >
             <path
                 strokeLinecap='round'
