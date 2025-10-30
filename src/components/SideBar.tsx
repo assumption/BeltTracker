@@ -4,15 +4,20 @@ import ExportButton from './ExportButton';
 import ClearButton from './ClearButton';
 import HamburgerButton from './HamburgerButton';
 import useSideBarExpand from '../hooks/useSideBarExpand';
+import useShowImportModal from '../hooks/useShowImportModal';
 
 export default function SideBar(): JSX.Element {
     const { expanded, setExpanded } = useSideBarExpand();
+    const { setShowModal } = useShowImportModal();
     useEffect(() => {
-        if (!expanded) {
-            return;
-        }
+        const onKey = (e: KeyboardEvent) => {
+            if (e.key !== 'Escape') {
+                return;
+            }
 
-        const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setExpanded(false);
+            setExpanded(false);
+            setShowModal(false);
+        };
         window.addEventListener('keydown', onKey);
         return () => window.removeEventListener('keydown', onKey);
     }, [expanded, setExpanded]);

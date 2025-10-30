@@ -13,7 +13,7 @@ export default function Calendar(): JSX.Element {
     const { dates, toggleDate } = useDates();
     const defaultClassNames = getDefaultClassNames();
     const screenWidth = useScreenWidth();
-    const numberOfMonths = screenWidth < 630 ? 1 : screenWidth < 920 ? 2 : 3;
+    const numberOfMonths = screenWidth < 630 ? 1 : screenWidth < 920 ? 2 : screenWidth < 1200 ? 3 : 4;
     const [month, setMonth] = useState(new Date());
     const shiftMonth = (delta: number) => {
         const nextMonth = new Date(month);
