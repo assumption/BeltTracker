@@ -1,15 +1,28 @@
-import { useState, type JSX } from 'react';
+import { useEffect, useState, type JSX } from 'react';
 import useShowImportModal from '../hooks/useShowImportModal';
 import useDates from '../hooks/useDates';
 import { tryParseDates } from '../utils/storage';
 import CheckIcon from './icons/CheckIcon';
 
 export default function ImportModal(): JSX.Element {
-    const { setShowModal } = useShowImportModal();
-    const { setDates } = useDates();
+    const { showModal, isModalClosing, startModalClosing } = useShowImportModal();
+    const { dates, setDates } = useDates();
     const [text, setText] = useState<string>('');
     const [isImportValid, setIsImportValid] = useState<boolean>(false);
     const [showSuccess, setShowSuccess] = useState(false);
+
+    useEffect(() => {
+        if (!showModal && !isModalClosing) {
+            setText('');
+            setIsImportValid(false);
+            setShowSuccess(false);
+        }
+    }, [showModal, isModalClosing]);
+
+    if (!showModal) {
+        return <></>;
+    }
+
     const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         const value = e.target.value;
         const { success, dates } = tryParseDates(value);
@@ -21,15 +34,15 @@ export default function ImportModal(): JSX.Element {
             setShowSuccess(true);
             setDates(dates);
             setTimeout(() => {
-                setShowModal(false);
-                setShowSuccess(false);
+                startModalClosing();
             }, 1500);
         }
     }
 
     return (
         <div className='fixed inset-0 z-4 flex items-center justify-center pointer-events-none'>
-            <div className='w-full max-w-md rounded-2xl border border-gray-800 bg-gray-900 shadow-xl shadow-black/60 pointer-events-auto'>
+            <div className={`relative w-full max-w-md rounded-2xl border border-gray-800 bg-gray-900 shadow-xl shadow-black/60 pointer-events-auto overflow-hidden transition-all
+                    ${isModalClosing ? 'animate-fade-out' : 'animate-fade-in'}`}>
                 <div className='flex items-start justify-between border-b border-gray-800 px-4 py-3'>
                     <div>
                         <h2 className='text-lg font-semibold text-white'>
@@ -41,7 +54,7 @@ export default function ImportModal(): JSX.Element {
                     </div>
 
                     <button
-                        onClick={() => setShowModal(false)}
+                        onClick={() => startModalClosing()}
                         className='ml-4 inline-flex h-8 w-8 items-center justify-center rounded-md text-gray-400 hover:bg-gray-800 hover:text-white active:bg-gray-800 active:text-white'
                         aria-label='Close import modal'
                     >
@@ -75,8 +88,8 @@ export default function ImportModal(): JSX.Element {
                                 id="import-json"
                                 autoFocus
                                 className={`${isImportValid || !text
-                                        ? 'focus:border-blue-400 focus:ring-blue-600/50'
-                                        : 'focus:border-red-400 focus:ring-red-600/50'
+                                    ? 'focus:border-blue-400 focus:ring-blue-600/50'
+                                    : 'focus:border-red-400 focus:ring-red-600/50'
                                     } focus:ring-2 h-40 w-full resize-none rounded-lg border border-gray-700 bg-gray-950 px-3 py-2 text-sm text-white outline-none ring-0 placeholder-gray-500`}
                                 placeholder='["2025-10-14", "2025-10-15", "2025-10-16", "yyyy-mm-dd"]'
                                 value={text}
@@ -87,7 +100,7 @@ export default function ImportModal(): JSX.Element {
                         <div className="flex flex-col items-center justify-center transition-all duration-500 ease-out animate-fade-in">
                             <CheckIcon />
                             <p className="mt-2 text-green-400 text-sm font-medium">
-                                Imported successfully!
+                                {`Imported ${dates.length === 1 ? '1 date' : `${dates.length} dates`} successfully!`}
                             </p>
                         </div>
                     )}

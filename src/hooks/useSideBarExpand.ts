@@ -1,9 +1,16 @@
 import { useAtom, useSetAtom } from 'jotai';
-import { sideBarExpandAtom } from '../atoms/sideBarExpandAtom';
+import { isSideBarClosingAtom, setShowSideBarExpandedAtom, showSideBarExpandedAtom, startSideBarClosingAtom } from '../atoms/sideBarExpandAtom';
 
 export default function useSideBarExpand() {
-    const [expanded] = useAtom(sideBarExpandAtom);
-    const setExpanded = useSetAtom(sideBarExpandAtom);
+    const [showSideBarExpanded] = useAtom(showSideBarExpandedAtom);
+    const [isSideBarClosing] = useAtom(isSideBarClosingAtom);
+    const setShowSideBarExpanded = useSetAtom(setShowSideBarExpandedAtom);
+    const startSideBarClosing = useSetAtom(startSideBarClosingAtom);
 
-    return { expanded, setExpanded };
+    return {
+        showSideBarExpanded,
+        isSideBarClosing,
+        setShowSideBarExpanded,
+        startSideBarClosing,
+    };
 }

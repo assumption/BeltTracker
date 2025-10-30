@@ -1,9 +1,16 @@
-import { useAtom, useSetAtom } from 'jotai';
-import { showImportModalAtom } from '../atoms/showImportModalAtom';
+import { useAtom, useSetAtom } from "jotai";
+import { isModalClosingAtom, setShowModalAtom, showModalAtom, startModalClosingAtom } from "../atoms/showImportModalAtom";
 
 export default function useShowImportModal() {
-    const [showModal] = useAtom(showImportModalAtom);
-    const setShowModal = useSetAtom(showImportModalAtom);
+    const [showModal] = useAtom(showModalAtom);
+    const [isModalClosing] = useAtom(isModalClosingAtom);
+    const setShowModal = useSetAtom(setShowModalAtom);
+    const startModalClosing = useSetAtom(startModalClosingAtom);
 
-    return { showModal, setShowModal };
+    return {
+        showModal,
+        isModalClosing,
+        setShowModal,
+        startModalClosing,
+    };
 }

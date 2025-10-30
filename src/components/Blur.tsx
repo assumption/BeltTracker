@@ -3,17 +3,35 @@ import useSideBarExpand from '../hooks/useSideBarExpand';
 import useShowImportModal from '../hooks/useShowImportModal';
 
 export default function Blur(): JSX.Element {
-    const { setExpanded } = useSideBarExpand();
-    const { showModal, setShowModal } = useShowImportModal();
+    const { showSideBarExpanded, isSideBarClosing, startSideBarClosing } = useSideBarExpand();
+    const { showModal, isModalClosing, startModalClosing } = useShowImportModal();
+
+    const shouldRender = showModal
+        || showSideBarExpanded
+        || isModalClosing
+        || isSideBarClosing;
+    if (!shouldRender) {
+        return <></>;
+    }
+
     const handleClick = () => {
-        setExpanded(false);
-        setShowModal(false);
+        if (showModal && !isModalClosing) {
+            startModalClosing();
+        }
+        if (showSideBarExpanded && !isSideBarClosing) {
+            startSideBarClosing();
+        }
     }
 
     return (
         <div
             onClick={handleClick}
-            className={`${showModal ? 'z-3' : 'z-2'} fixed inset-0 bg-black/30 backdrop-blur-sm transition-all duration-300`}>
+            className={`
+                fixed inset-0 transition-opacity duration-300
+                bg-black/30 backdrop-blur-sm
+                ${isModalClosing || isSideBarClosing ? 'opacity-0' : 'opacity-100'}
+                ${showModal ? 'z-3' : 'z-2'}
+            `}>
         </div>
     );
 }
