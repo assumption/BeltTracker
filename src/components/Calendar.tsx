@@ -8,13 +8,14 @@ import DayWithoutWeekends from './DayWithoutWeekends';
 import DayTitleWithoutWeekends from './DayTitleWithoutWeekends';
 import { useScreenWidth } from '../hooks/useScreenWidth';
 import { useSwipeable } from 'react-swipeable';
+import { lastMonth } from '../utils/date';
 
 export default function Calendar(): JSX.Element {
     const { dates, toggleDate } = useDates();
     const defaultClassNames = getDefaultClassNames();
     const screenWidth = useScreenWidth();
     const numberOfMonths = screenWidth < 630 ? 1 : screenWidth < 920 ? 2 : screenWidth < 1200 ? 3 : 4;
-    const [month, setMonth] = useState(new Date());
+    const [month, setMonth] = useState(lastMonth());
     const shiftMonth = (delta: number) => {
         const nextMonth = new Date(month);
         nextMonth.setMonth(month.getMonth() + delta);
