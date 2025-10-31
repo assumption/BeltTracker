@@ -38,6 +38,7 @@ export default function Calendar(): JSX.Element {
                 navLayout='around'
                 numberOfMonths={numberOfMonths}
                 showWeekNumber
+                showOutsideDays
                 animate
                 ISOWeek
                 components={{
@@ -57,6 +58,7 @@ export default function Calendar(): JSX.Element {
                     week_number_header: `font-normal text-gray-300 text-base`,
                     week_number: `font-normal text-gray-300 text-base text-center`,
                     day: `${defaultClassNames.day} hover:bg-gray-800 active:bg-gray-800 transition-colors duration-200 text-xl rounded-full`,
+                    outside: `font-normal text-gray-500 text-base`,
                 }}
             />
         </div>

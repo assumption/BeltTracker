@@ -2,13 +2,13 @@ import { atom } from 'jotai';
 import { atomWithStorage } from 'jotai/utils';
 import { dbKey, readDates, saveDates } from '../utils/storage';
 import type { SyncStorage } from 'jotai/vanilla/utils/atomWithStorage';
-import { dateLib } from '../utils/dateLib';
-import { setDatesByWeekAtom, toggleDatesByWeekAtom } from './datesByWeekAtom';
+import { dateLib } from '../utils/date';
+import { setDatesByYearAndWeekAtom, toggleDatesByYearAndWeekAtom } from './datesByYearAndWeekAtom';
 import { store } from './atoms';
 
 const getItem = (): Date[] => {
     const dates = readDates();
-    store.set(setDatesByWeekAtom, dates);
+    store.set(setDatesByYearAndWeekAtom, dates);
     return dates;
 };
 
@@ -49,10 +49,10 @@ export const toggleDateAtom = atom(null, (get, set, date: Date) => {
     }
 
     set(datesAtom, dates);
-    set(toggleDatesByWeekAtom, date);
+    set(toggleDatesByYearAndWeekAtom, date);
 });
 
 export const setDatesAtom = atom(null, (_, set, dates: Date[]) => {
     set(datesAtom, dates);
-    set(setDatesByWeekAtom, dates);
+    set(setDatesByYearAndWeekAtom, dates);
 });

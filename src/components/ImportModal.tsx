@@ -74,18 +74,18 @@ export default function ImportModal(): JSX.Element {
                     </button>
                 </div>
 
-                <div className="relative px-4 py-4 min-h-[8rem] flex flex-col justify-center">
+                <div className='relative px-4 py-4 min-h-[8rem] flex flex-col justify-center'>
                     {!showSuccess ? (
                         <>
                             <label
-                                htmlFor="import-json"
-                                className="mb-2 block text-sm font-medium text-gray-300"
+                                htmlFor='import-json'
+                                className='mb-2 block text-sm font-medium text-gray-300'
                             >
                                 JSON
                             </label>
 
                             <textarea
-                                id="import-json"
+                                id='import-json'
                                 autoFocus
                                 className={`${isImportValid || !text
                                     ? 'focus:border-blue-400 focus:ring-blue-600/50'
@@ -97,9 +97,9 @@ export default function ImportModal(): JSX.Element {
                             />
                         </>
                     ) : (
-                        <div className="flex flex-col items-center justify-center transition-all duration-500 ease-out animate-fade-in">
+                        <div className='flex flex-col items-center justify-center transition-all duration-500 ease-out animate-fade-in'>
                             <CheckIcon />
-                            <p className="mt-2 text-green-400 text-sm font-medium">
+                            <p className='mt-2 text-green-400 text-sm font-medium'>
                                 {`Imported ${dates.length === 1 ? '1 date' : `${dates.length} dates`} successfully!`}
                             </p>
                         </div>

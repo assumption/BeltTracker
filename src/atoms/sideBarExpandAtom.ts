@@ -1,4 +1,4 @@
-import { atom } from "jotai";
+import { atom } from 'jotai';
 
 export const showSideBarExpandedAtom = atom<boolean>(false);
 
