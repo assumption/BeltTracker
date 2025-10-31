@@ -41,21 +41,21 @@ export default function ImportModal(): JSX.Element {
 
     return (
         <div className='fixed inset-0 z-4 flex items-center justify-center pointer-events-none'>
-            <div className={`relative w-full max-w-md rounded-2xl border border-gray-800 bg-gray-900 shadow-xl shadow-black/60 pointer-events-auto overflow-hidden transition-all
+            <div className={`relative w-full max-w-md rounded-2xl border border-gray-300 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 shadow-xl shadow-black/60 pointer-events-auto overflow-hidden transition-all
                     ${isModalClosing ? 'animate-fade-out' : 'animate-fade-in'}`}>
-                <div className='flex items-start justify-between border-b border-gray-800 px-4 py-3'>
+                <div className='flex items-start justify-between border-b border-gray-300 dark:border-gray-800 px-4 py-3'>
                     <div>
-                        <h2 className='text-lg font-semibold text-white'>
+                        <h2 className='text-lg font-semibold text-black dark:text-white'>
                             Import Dates
                         </h2>
-                        <p className='mt-1 text-xs text-gray-400'>
+                        <p className='mt-1 text-xs text-gray-900 dark:text-gray-400'>
                             Paste the JSON you exported. This will overwrite existing data.
                         </p>
                     </div>
 
                     <button
                         onClick={() => startModalClosing()}
-                        className='ml-4 inline-flex h-8 w-8 items-center justify-center rounded-md text-gray-400 hover:bg-gray-800 hover:text-white active:bg-gray-800 active:text-white'
+                        className='ml-4 inline-flex h-8 w-8 items-center justify-center rounded-md text-gray-500 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white active:bg-gray-300 dark:active:bg-gray-800 active:text-black dark:active:text-white'
                         aria-label='Close import modal'
                     >
                         <svg
@@ -79,7 +79,7 @@ export default function ImportModal(): JSX.Element {
                         <>
                             <label
                                 htmlFor='import-json'
-                                className='mb-2 block text-sm font-medium text-gray-300'
+                                className='mb-2 block text-sm font-medium text-gray-800 dark:text-gray-300'
                             >
                                 JSON
                             </label>
@@ -88,9 +88,9 @@ export default function ImportModal(): JSX.Element {
                                 id='import-json'
                                 autoFocus
                                 className={`${isImportValid || !text
-                                    ? 'focus:border-blue-400 focus:ring-blue-600/50'
-                                    : 'focus:border-red-400 focus:ring-red-600/50'
-                                    } focus:ring-2 h-40 w-full resize-none rounded-lg border border-gray-700 bg-gray-950 px-3 py-2 text-sm text-white outline-none ring-0 placeholder-gray-500`}
+                                    ? 'focus:border-blue-500 dark:focus:border-blue-400 focus:ring-blue-600/50'
+                                    : 'focus:border-red-500 dark:focus:border-red-400 focus:ring-red-600/50'
+                                    } focus:ring-2 h-40 w-full resize-none rounded-lg border border-gray-700 bg-gray-50 dark:bg-gray-950 px-3 py-2 text-sm text-black dark:text-white outline-none ring-0 placeholder-gray-500`}
                                 placeholder='["2025-10-14", "2025-10-15", "2025-10-16", "yyyy-mm-dd"]'
                                 value={text}
                                 onChange={onChange}
@@ -99,7 +99,7 @@ export default function ImportModal(): JSX.Element {
                     ) : (
                         <div className='flex flex-col items-center justify-center transition-all duration-500 ease-out animate-fade-in'>
                             <CheckIcon />
-                            <p className='mt-2 text-green-400 text-sm font-medium'>
+                            <p className='mt-2 text-green-500 dark:text-green-400 text-sm font-medium'>
                                 {`Imported ${dates.length === 1 ? '1 date' : `${dates.length} dates`} successfully!`}
                             </p>
                         </div>

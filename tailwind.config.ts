@@ -10,6 +10,7 @@ const config: Config = {
         },
     },
     plugins: [],
+    darkMode: 'media',
 }
 
 export default config

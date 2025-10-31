@@ -23,7 +23,7 @@ export default function SideBar(): JSX.Element {
     }, [showSideBarExpanded, startSideBarClosing, startModalClosing]);
 
     return (
-        <div className={`${showSideBarExpanded ? 'w-64' : 'w-20'} transition-all duration-300 bg-gray-900 fixed top-0 left-0 h-full border-r border-gray-700 flex flex-col items-center py-4 space-y-4 px-4 z-3`}>
+        <div className={`${showSideBarExpanded ? 'w-64' : 'w-20'} transition-all duration-300 bg-gray-200 dark:bg-gray-900 fixed top-0 left-0 h-full border-r border-gray-300 dark:border-gray-700 flex flex-col items-center py-4 space-y-4 px-4 z-3`}>
             <HamburgerButton />
             <ExportButton />
             <ImportButton />

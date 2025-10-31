@@ -52,14 +52,14 @@ export default function Calendar(): JSX.Element {
                 onPrevClick={() => shiftMonth(-1)}
                 onDayClick={(date) => toggleDate(date)}
                 classNames={{
-                    today: `text-blue-400 font-bold`,
-                    selected: `text-red-400`,
-                    chevron: `fill-blue-400 hover:fill-blue-200 active:fill-blue-200 transition-colors duration-200`,
-                    weekday: `font-normal text-gray-300 text-base`,
-                    week_number_header: `font-normal text-gray-300 text-base`,
-                    week_number: `font-normal text-gray-300 text-base text-center`,
-                    day: `${defaultClassNames.day} hover:bg-gray-800 active:bg-gray-800 transition-colors duration-200 text-xl rounded-full`,
-                    outside: `font-normal text-gray-500 text-base`,
+                    today: `text-blue-500 dark:text-blue-400 font-bold`,
+                    selected: `text-red-500 dark:text-red-400`,
+                    chevron: `fill-blue-500 dark:fill-blue-400 hover:fill-blue-800 dark:hover:fill-blue-200 active:fill-blue-800 dark:active:fill-blue-200 transition-colors duration-200`,
+                    weekday: `font-normal text-gray-700 dark:text-gray-300 text-base`,
+                    week_number_header: `font-normal text-gray-700 dark:text-gray-300 text-base`,
+                    week_number: `font-normal text-base text-center`,
+                    day: `${defaultClassNames.day} hover:bg-gray-300 dark:hover:bg-gray-800 active:bg-gray-300 dark:active:bg-gray-800 transition-colors duration-200 text-xl rounded-full`,
+                    outside: `font-normal text-gray-400 dark:text-gray-500 text-base`,
                 }}
             />
         </div>
