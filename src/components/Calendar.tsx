@@ -27,8 +27,21 @@ export default function Calendar(): JSX.Element {
         preventScrollOnSwipe: true,
     });
 
+    const handleWheel = (event: React.WheelEvent) => {
+        if (event.ctrlKey) {
+            return;
+        }
+        
+        event.preventDefault();
+        if (event.deltaY > 0) {
+            shiftMonth(1);
+        } else if (event.deltaY < 0) {
+            shiftMonth(-1);
+        }
+    };
+
     return (
-        <div {...swipeHandlers}>
+        <div {...swipeHandlers} onWheel={handleWheel}>
             <DayPicker
                 key={dates.length}
                 mode='multiple'
