@@ -2,6 +2,7 @@ import { type JSX } from 'react';
 import Calendar from './Calendar';
 import Blur from './Blur';
 import ImportModal from './ImportModal';
+import HelpModal from './HelpModal';
 
 export default function Main(): JSX.Element {
     return (
@@ -9,6 +10,7 @@ export default function Main(): JSX.Element {
             <Calendar />
             <Blur />
             <ImportModal />
+            <HelpModal />
         </main>
     );
 }
