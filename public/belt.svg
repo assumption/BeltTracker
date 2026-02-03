@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Belt strap segments in Microsoft colors -->
+  <!-- Red segment -->
+  <rect x="2" y="12" width="7" height="8" rx="1" fill="#f14f21"/>
+  <!-- Green segment -->
+  <rect x="9" y="12" width="7" height="8" rx="1" fill="#7eb900"/>
+  <!-- Blue segment -->
+  <rect x="16" y="12" width="7" height="8" rx="1" fill="#00a3ee"/>
+  <!-- Yellow segment -->
+  <rect x="23" y="12" width="7" height="8" rx="1" fill="#feb800"/>
+  
+  <!-- Belt buckle -->
+  <rect x="12" y="9" width="8" height="14" rx="2" fill="#727272" stroke="#525252" stroke-width="1"/>
+  <rect x="14" y="11" width="4" height="10" rx="1" fill="#525252"/>
+  
+  <!-- Belt holes -->
+  <circle cx="5.5" cy="16" r="1" fill="#DC2626"/>
+  <circle cx="26.5" cy="16" r="1" fill="#D97706"/>
+</svg>
