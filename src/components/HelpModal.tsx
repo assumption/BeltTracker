@@ -9,10 +9,10 @@ export default function HelpModal(): JSX.Element {
     }
 
     return (
-        <div className='fixed inset-0 z-4 flex items-center justify-center pointer-events-none'>
-            <div className={`relative w-full max-w-md rounded-2xl border border-gray-300 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 shadow-xl shadow-black/60 pointer-events-auto overflow-hidden transition-all
+        <div className='fixed inset-0 z-4 flex items-center justify-center pointer-events-none p-4'>
+            <div className={`relative w-full max-w-md max-h-full rounded-2xl border border-gray-300 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 shadow-xl shadow-black/60 pointer-events-auto overflow-hidden transition-all flex flex-col
                     ${isHelpModalClosing ? 'animate-fade-out' : 'animate-fade-in'}`}>
-                <div className='flex items-start justify-between border-b border-gray-300 dark:border-gray-800 px-4 py-3'>
+                <div className='flex items-start justify-between border-b border-gray-300 dark:border-gray-800 px-4 py-3 flex-shrink-0'>
                     <div>
                         <h2 className='text-lg font-semibold text-black dark:text-white'>
                             How to Use Belt Tracker
@@ -43,7 +43,7 @@ export default function HelpModal(): JSX.Element {
                     </button>
                 </div>
 
-                <div className='px-4 py-4'>
+                <div className='px-4 py-4 overflow-y-auto'>
                     <ul className='space-y-3 text-sm text-gray-800 dark:text-gray-300'>
                         <li className='flex items-start'>
                             <span className='mr-2 text-blue-500'>•</span>
