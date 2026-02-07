@@ -59,6 +59,10 @@ export default function HelpModal(): JSX.Element {
                         </li>
                         <li className='flex items-start'>
                             <span className='mr-2 text-blue-500'>•</span>
+                            <span>To see the days you have badged in for reference, visit <a href="https://aka.ms/EmployeeProfile" className="text-blue-500 underline">aka.ms/EmployeeProfile</a> and click "Flexible Work".</span>
+                        </li>
+                        <li className='flex items-start'>
+                            <span className='mr-2 text-blue-500'>•</span>
                             <span><strong>Export</strong> your data as JSON to back up your progress or transfer it to another device using the Export button in the Side Bar.</span>
                         </li>
                         <li className='flex items-start'>
